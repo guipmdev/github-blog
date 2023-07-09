@@ -1,5 +1,20 @@
-import { HomeContainer } from './styles'
+import {
+  HomeContainer,
+  UserCard,
+  BlogFeed,
+  SearchForm,
+  Articles,
+} from './styles'
 
 export function Home() {
-  return <HomeContainer></HomeContainer>
+  return (
+    <HomeContainer>
+      <UserCard />
+
+      <BlogFeed>
+        <SearchForm />
+        <Articles />
+      </BlogFeed>
+    </HomeContainer>
+  )
 }
