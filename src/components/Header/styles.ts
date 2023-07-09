@@ -12,5 +12,7 @@ export const HeaderContainer = styled.header`
 
   img {
     width: 148px;
+
+    margin-bottom: 2.875rem;
   }
 `

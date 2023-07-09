@@ -1,6 +1,7 @@
 import {
   HomeContainer,
   UserCard,
+  UserInfo,
   BlogFeed,
   SearchForm,
   Articles,
@@ -19,8 +20,8 @@ export function Home() {
       <UserCard>
         <img src="https://github.com/diego3g.png" alt="" />
 
-        <div>
-          <div className="user-info">
+        <UserInfo>
+          <div>
             <h2>Cameron Williamson</h2>
             <p>
               Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
@@ -42,9 +43,13 @@ export function Home() {
               <FaUserGroup /> 32 seguidores
             </span>
           </div>
-        </div>
+        </UserInfo>
 
-        <a href="https://github.com/diego3g">
+        <a
+          href="https://github.com/diego3g"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           GITHUB <FaArrowUpRightFromSquare />
         </a>
       </UserCard>
