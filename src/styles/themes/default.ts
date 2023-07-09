@@ -27,4 +27,4 @@ export const defaultTheme = {
 
   // Components
   'component-link': '700 0.75rem / 160% "Nunito", sans-serif',
-}
+} as const
