@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export function PostItem() {
   return (
     <PostItemContainer>
-      <Link to="#">
+      <Link to="/post/1">
         <div>
           <h3>JavaScript data types and data structures</h3>
           <span>Há 1 dia</span>
