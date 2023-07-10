@@ -1,6 +1,4 @@
-import { PostCardContainer } from './styles'
-
-import { Link } from 'react-router-dom'
+import { PostCardContainer, CustomLink } from './styles'
 
 import {
   FaChevronLeft,
@@ -16,16 +14,16 @@ export function PostCard() {
   return (
     <PostCardContainer>
       <div className="navigation">
-        <Link to=".." relative="path">
+        <CustomLink to=".." relative="path">
           <FaChevronLeft /> VOLTAR
-        </Link>
-        <a
-          href="https://github.com/diego3g"
+        </CustomLink>
+        <CustomLink
+          to="https://github.com/diego3g"
           target="_blank"
           rel="noopener noreferrer"
         >
           VER NO GITHUB <FaArrowUpRightFromSquare />
-        </a>
+        </CustomLink>
       </div>
 
       <h1>JavaScript data types and data structures</h1>

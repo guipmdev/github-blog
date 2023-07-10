@@ -1,11 +1,14 @@
 import styled from 'styled-components'
 
-import { CardBase } from '../../../../styles/bases'
+import { CardBase, CustomLinkBase } from '../../../../styles/bases'
 
 export const PostCardContainer = styled(CardBase)`
   flex-direction: column;
 
   .navigation {
+    display: flex;
+    justify-content: space-between;
+
     margin-bottom: 1.25rem;
   }
 
@@ -16,3 +19,5 @@ export const PostCardContainer = styled(CardBase)`
     color: ${(props) => props.theme.title};
   }
 `
+
+export const CustomLink = styled(CustomLinkBase)``

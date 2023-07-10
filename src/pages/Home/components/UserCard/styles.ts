@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { CardBase } from '../../../../styles/bases'
+import { CardBase, CustomLinkBase } from '../../../../styles/bases'
 
 export const UserCardContainer = styled(CardBase)`
   position: relative;
@@ -12,26 +12,12 @@ export const UserCardContainer = styled(CardBase)`
 
     border-radius: 8px;
   }
+`
 
-  a {
-    position: absolute;
-    top: 2.5rem;
-    right: 2rem;
-
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    border-bottom: 1px solid transparent;
-
-    font: ${(props) => props.theme['component-link']};
-    color: ${(props) => props.theme['brand-blue']};
-    text-decoration: none;
-
-    &:hover {
-      border-bottom-color: ${(props) => props.theme['brand-blue']};
-    }
-  }
+export const CustomLink = styled(CustomLinkBase)`
+  position: absolute;
+  top: 2.5rem;
+  right: 2rem;
 `
 
 export const UserInfo = styled.div`

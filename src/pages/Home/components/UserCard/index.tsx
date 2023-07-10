@@ -1,4 +1,4 @@
-import { UserCardContainer, UserInfo } from './styles'
+import { UserCardContainer, UserInfo, CustomLink } from './styles'
 
 import {
   FaGithub,
@@ -33,13 +33,13 @@ export function UserCard() {
         />
       </UserInfo>
 
-      <a
-        href="https://github.com/diego3g"
+      <CustomLink
+        to="https://github.com/diego3g"
         target="_blank"
         rel="noopener noreferrer"
       >
         GITHUB <FaArrowUpRightFromSquare />
-      </a>
+      </CustomLink>
     </UserCardContainer>
   )
 }
