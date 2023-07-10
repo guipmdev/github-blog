@@ -11,6 +11,7 @@ export const UserCardContainer = styled(CardBase)`
 
   img {
     width: 148px;
+    height: 148px;
 
     border-radius: 8px;
   }

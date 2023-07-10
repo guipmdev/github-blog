@@ -8,33 +8,52 @@ import {
 } from 'react-icons/fa6'
 
 import { IconInfos } from '../../../../components/IconInfos'
+import { useEffect, useState } from 'react'
+
+interface UserInfo {
+  login: string
+  id: number
+  avatar_url: string
+  html_url: string
+  name?: string
+  company?: string
+  bio?: string
+  followers: number
+}
 
 export function UserCard() {
+  const [username, setUsername] = useState('guipmdev')
+  const [userInfo, setUserInfo] = useState<UserInfo>({} as UserInfo)
+
+  useEffect(() => {
+    fetch(`https://api.github.com/users/${username}`)
+      .then((response) => response.json())
+      .then((data) => setUserInfo(data))
+  }, [username])
+
   return (
     <UserCardContainer>
-      <img src="https://github.com/diego3g.png" alt="" />
+      <img src={userInfo.avatar_url} alt="" />
 
       <UserInfo>
         <div>
-          <h1>Cameron Williamson</h1>
-          <p>
-            Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-            viverra massa quam dignissim aenean malesuada suscipit. Nunc,
-            volutpat pulvinar vel mass.
-          </p>
+          <h1>{userInfo.name}</h1>
+          <p>{userInfo.bio}</p>
         </div>
 
         <IconInfos
           infos={[
-            { name: 'diego3g', icon: FaGithub },
-            { name: 'Rocketseat', icon: FaBuilding },
-            { name: '32 seguidores', icon: FaUserGroup },
+            { name: userInfo.login, icon: FaGithub },
+            ...(userInfo.company
+              ? [{ name: userInfo.company, icon: FaBuilding }]
+              : []),
+            { name: `${userInfo.followers} seguidores`, icon: FaUserGroup },
           ]}
         />
       </UserInfo>
 
       <CustomLink
-        to="https://github.com/diego3g"
+        to={userInfo.html_url}
         target="_blank"
         rel="noopener noreferrer"
       >
