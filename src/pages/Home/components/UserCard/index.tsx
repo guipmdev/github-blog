@@ -34,7 +34,7 @@ export function UserCard() {
               infos={[
                 { name: user.login, icon: FaGithub },
                 ...(user.company
-                  ? [{ name: user.company, icon: FaBuilding }]
+                  ? [{ name: user.company.split('@')[1], icon: FaBuilding }]
                   : []),
                 { name: `${user.followers} seguidores`, icon: FaUserGroup },
               ]}
