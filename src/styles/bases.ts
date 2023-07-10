@@ -9,7 +9,7 @@ export const CardBase = styled.div`
 
   padding: 2rem 2.5rem;
   border-radius: 10px;
-  margin: -88px auto 4.5rem;
+  margin: -88px auto 0;
 
   box-shadow: 0 2px 28px 0 rgba(0 0 0 / 20%);
 `

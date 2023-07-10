@@ -7,6 +7,8 @@ export const UserCardContainer = styled(CardBase)`
 
   gap: 2rem;
 
+  margin-bottom: 4.5rem;
+
   img {
     width: 148px;
 
