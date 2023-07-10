@@ -3,8 +3,22 @@ import styled from 'styled-components'
 export const PostItemContainer = styled.li`
   background: ${(props) => props.theme['base-post']};
 
-  padding: 2rem;
+  border: 2px solid transparent;
   border-radius: 10px;
+
+  &:hover {
+    border-color: ${(props) => props.theme['base-label']};
+  }
+
+  a {
+    all: unset;
+
+    display: block;
+
+    padding: 2rem;
+
+    cursor: pointer;
+  }
 
   div {
     display: flex;
