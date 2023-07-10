@@ -7,11 +7,10 @@ export const UserCardContainer = styled.div`
   gap: 2rem;
 
   background: ${(props) => props.theme['base-profile']};
-  max-width: calc(864px + 1rem);
 
   padding: 2rem 2.5rem;
   border-radius: 10px;
-  margin: -88px auto 0;
+  margin: -88px auto 4.5rem;
 
   box-shadow: 0 2px 28px 0 rgba(0 0 0 / 20%);
 

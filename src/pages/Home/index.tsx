@@ -1,6 +1,7 @@
-import { HomeContainer, BlogFeed, SearchForm, Articles } from './styles'
+import { HomeContainer, BlogFeed, Articles } from './styles'
 
 import { UserCard } from './components/UserCard'
+import { SearchForm } from './components/SearchForm'
 
 export function Home() {
   return (
