@@ -11,6 +11,7 @@ import {
 
 import { UserContext } from '../../../../contexts/UserContext'
 
+import { Loading } from '../../../../components/Loading'
 import { IconInfos } from '../../../../components/IconInfos'
 
 export function UserCard() {
@@ -18,7 +19,9 @@ export function UserCard() {
 
   return (
     <UserCardContainer>
-      {user && (
+      {!user ? (
+        <Loading />
+      ) : (
         <>
           <img src={user.avatar_url} alt="" />
           <UserInfo>
