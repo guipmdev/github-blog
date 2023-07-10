@@ -1,17 +1,24 @@
-import { HomeContainer, BlogFeed, Articles } from './styles'
+import { HomeContainer, Posts } from './styles'
 
 import { UserCard } from './components/UserCard'
 import { SearchForm } from './components/SearchForm'
+import { PostItem } from './components/PostItem'
 
 export function Home() {
   return (
     <HomeContainer>
       <UserCard />
 
-      <BlogFeed>
+      <section>
         <SearchForm />
-        <Articles />
-      </BlogFeed>
+
+        <Posts>
+          <PostItem />
+          <PostItem />
+          <PostItem />
+          <PostItem />
+        </Posts>
+      </section>
     </HomeContainer>
   )
 }

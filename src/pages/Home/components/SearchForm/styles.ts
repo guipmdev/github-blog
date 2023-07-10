@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const SearchFormContainer = styled.form`
+  margin-bottom: 3rem;
+
   div {
     display: flex;
     justify-content: space-between;
@@ -8,7 +10,7 @@ export const SearchFormContainer = styled.form`
     margin-bottom: 0.75rem;
   }
 
-  h3 {
+  h2 {
     font: ${(props) => props.theme['title-s']};
     color: ${(props) => props.theme['base-subtitle']};
   }

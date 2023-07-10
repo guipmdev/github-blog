@@ -14,7 +14,7 @@ export function UserCard() {
 
       <UserInfo>
         <div>
-          <h2>Cameron Williamson</h2>
+          <h1>Cameron Williamson</h1>
           <p>
             Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
             viverra massa quam dignissim aenean malesuada suscipit. Nunc,

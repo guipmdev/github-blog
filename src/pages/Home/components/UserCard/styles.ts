@@ -46,7 +46,7 @@ export const UserInfo = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  h2 {
+  h1 {
     margin-bottom: 0.5rem;
 
     font: ${(props) => props.theme['title-l']};

@@ -7,6 +7,12 @@ export const HomeContainer = styled.main`
   margin: 0 auto;
 `
 
-export const BlogFeed = styled.section``
+export const Posts = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 
-export const Articles = styled.div``
+  margin-bottom: 3rem;
+
+  list-style: none;
+`
