@@ -5,13 +5,16 @@ import { CardBase, CustomLinkBase } from '../../../../styles/bases'
 export const UserCardContainer = styled(CardBase)`
   position: relative;
 
+  min-height: 212px;
+
   gap: 2rem;
 
   margin-bottom: 4.5rem;
 
   img {
-    width: 148px;
+    background: ${(props) => props.theme['base-border']};
     height: 148px;
+    min-width: 148px;
 
     border-radius: 8px;
   }

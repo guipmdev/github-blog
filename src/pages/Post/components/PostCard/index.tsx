@@ -8,34 +8,44 @@ import {
   FaComment,
 } from 'react-icons/fa6'
 
+import { PostData } from '../..'
+
 import { IconInfos } from '../../../../components/IconInfos'
 
-export function PostCard() {
+interface PostCardProps {
+  postData: PostData
+}
+
+export function PostCard({ postData }: PostCardProps) {
   return (
     <PostCardContainer>
-      <div className="navigation">
-        <CustomLink to=".." relative="path">
-          <FaChevronLeft /> VOLTAR
-        </CustomLink>
-        <CustomLink
-          to="https://github.com/diego3g"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          VER NO GITHUB <FaArrowUpRightFromSquare />
-        </CustomLink>
-      </div>
+      {!!Object.keys(postData).length && (
+        <>
+          <div className="navigation">
+            <CustomLink to=".." relative="path">
+              <FaChevronLeft /> VOLTAR
+            </CustomLink>
+            <CustomLink
+              to={postData.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              VER NO GITHUB <FaArrowUpRightFromSquare />
+            </CustomLink>
+          </div>
 
-      <h1>JavaScript data types and data structures</h1>
+          <h1>{postData.title}</h1>
 
-      <IconInfos
-        infos={[
-          { name: 'diego3g', icon: FaGithub },
-          { name: 'Há 1 dia', icon: FaCalendarDay },
-          { name: '5 comentários', icon: FaComment },
-        ]}
-        $textColor="base-span"
-      />
+          <IconInfos
+            infos={[
+              { name: postData.user.login, icon: FaGithub },
+              { name: postData.created_at, icon: FaCalendarDay },
+              { name: `${postData.comments} comentários`, icon: FaComment },
+            ]}
+            $textColor="base-span"
+          />
+        </>
+      )}
     </PostCardContainer>
   )
 }
