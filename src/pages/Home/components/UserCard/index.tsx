@@ -7,8 +7,11 @@ import {
   FaArrowUpRightFromSquare,
 } from 'react-icons/fa6'
 
+import { useState, useEffect, useCallback } from 'react'
+
+import { api } from '../../../../lib/axios'
+
 import { IconInfos } from '../../../../components/IconInfos'
-import { useEffect, useState } from 'react'
 
 interface UserInfo {
   login: string
@@ -22,14 +25,18 @@ interface UserInfo {
 }
 
 export function UserCard() {
-  const [username, setUsername] = useState('guipmdev')
+  const [username] = useState('guipmdev')
   const [userInfo, setUserInfo] = useState<UserInfo>({} as UserInfo)
 
-  useEffect(() => {
-    fetch(`https://api.github.com/users/${username}`)
-      .then((response) => response.json())
-      .then((data) => setUserInfo(data))
+  const fetchUserInfo = useCallback(async () => {
+    const response = await api.get(`https://api.github.com/users/${username}`)
+
+    setUserInfo(response.data)
   }, [username])
+
+  useEffect(() => {
+    fetchUserInfo()
+  }, [fetchUserInfo])
 
   return (
     <UserCardContainer>
