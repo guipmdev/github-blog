@@ -7,6 +7,8 @@ import {
   FaArrowUpRightFromSquare,
 } from 'react-icons/fa6'
 
+import { IconInfos } from '../../../../components/IconInfos'
+
 export function UserCard() {
   return (
     <UserCardContainer>
@@ -22,19 +24,13 @@ export function UserCard() {
           </p>
         </div>
 
-        <div className="links">
-          <span>
-            <FaGithub /> diego3g
-          </span>
-
-          <span>
-            <FaBuilding /> Rocketseat
-          </span>
-
-          <span>
-            <FaUserGroup /> 32 seguidores
-          </span>
-        </div>
+        <IconInfos
+          infos={[
+            { name: 'diego3g', icon: FaGithub },
+            { name: 'Rocketseat', icon: FaBuilding },
+            { name: '32 seguidores', icon: FaUserGroup },
+          ]}
+        />
       </UserInfo>
 
       <a

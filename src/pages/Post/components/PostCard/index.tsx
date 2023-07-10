@@ -10,10 +10,12 @@ import {
   FaComment,
 } from 'react-icons/fa6'
 
+import { IconInfos } from '../../../../components/IconInfos'
+
 export function PostCard() {
   return (
     <PostCardContainer>
-      <div>
+      <div className="navigation">
         <Link to=".." relative="path">
           <FaChevronLeft /> VOLTAR
         </Link>
@@ -28,19 +30,14 @@ export function PostCard() {
 
       <h1>JavaScript data types and data structures</h1>
 
-      <div className="links">
-        <span>
-          <FaGithub /> diego3g
-        </span>
-
-        <span>
-          <FaCalendarDay /> Há 1 dia
-        </span>
-
-        <span>
-          <FaComment /> 5 comentários
-        </span>
-      </div>
+      <IconInfos
+        infos={[
+          { name: 'diego3g', icon: FaGithub },
+          { name: 'Há 1 dia', icon: FaCalendarDay },
+          { name: '5 comentários', icon: FaComment },
+        ]}
+        $textColor="base-span"
+      />
     </PostCardContainer>
   )
 }
