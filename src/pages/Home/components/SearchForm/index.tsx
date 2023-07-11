@@ -18,14 +18,18 @@ const searchPostsFormSchema = z.object({
 
 type SearchPostsFormInputs = z.infer<typeof searchPostsFormSchema>
 
-export function SearchForm() {
+interface SearchFormProps {
+  updateIsSearchingStatus: (newStatus: boolean) => void
+}
+
+export function SearchForm({ updateIsSearchingStatus }: SearchFormProps) {
   const { fetchPosts, posts } = useContext(PostsContext)
 
   const {
     register,
     watch,
     handleSubmit,
-    formState: { isDirty, isSubmitted },
+    formState: { isDirty, isSubmitting, isSubmitted },
     reset,
   } = useForm<SearchPostsFormInputs>({
     resolver: zodResolver(searchPostsFormSchema),
@@ -81,6 +85,10 @@ export function SearchForm() {
     },
     [fetchPosts],
   )
+
+  useEffect(() => {
+    updateIsSearchingStatus(isSubmitting)
+  }, [isSubmitting, updateIsSearchingStatus])
 
   useEffect(() => {
     if (isSubmitted) {
