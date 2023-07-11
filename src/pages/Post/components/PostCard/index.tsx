@@ -8,18 +8,21 @@ import {
   FaComment,
 } from 'react-icons/fa6'
 
-import { PostData } from '../..'
+import { Post } from '../../../../contexts/PostsContext'
 
 import { IconInfos } from '../../../../components/IconInfos'
+import { Loading } from '../../../../components/Loading'
 
 interface PostCardProps {
-  postData: PostData
+  postData: Post
 }
 
 export function PostCard({ postData }: PostCardProps) {
   return (
     <PostCardContainer>
-      {!!Object.keys(postData).length && (
+      {!Object.keys(postData).length ? (
+        <Loading />
+      ) : (
         <>
           <div className="navigation">
             <CustomLink to=".." relative="path">

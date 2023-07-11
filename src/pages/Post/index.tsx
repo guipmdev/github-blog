@@ -7,10 +7,12 @@ import remarkEmoji from 'remark-emoji'
 
 import { useParams } from 'react-router-dom'
 
+import { Post as PostType } from '../../contexts/PostsContext'
+
 import { api } from '../../lib/axios'
 
 import { PostCard } from './components/PostCard'
-import { Post as PostType } from '../../contexts/PostsContext'
+import { Loading } from '../../components/Loading'
 
 export function Post() {
   const [postData, setPostData] = useState<PostType>({} as PostType)
@@ -33,13 +35,17 @@ export function Post() {
     <PostContainer>
       <PostCard postData={postData} />
 
-      <CustomReactMarkdownPreview
-        source={markdown}
-        remarkPlugins={[remarkGfm, remarkEmoji]}
-        wrapperElement={{
-          'data-color-mode': 'dark',
-        }}
-      />
+      {markdown.length === 0 ? (
+        <Loading />
+      ) : (
+        <CustomReactMarkdownPreview
+          source={markdown}
+          remarkPlugins={[remarkGfm, remarkEmoji]}
+          wrapperElement={{
+            'data-color-mode': 'dark',
+          }}
+        />
+      )}
     </PostContainer>
   )
 }
