@@ -40,6 +40,8 @@ export function PostsProvider({ children }: PostsProviderProps) {
   const [posts, setPosts] = useState<Post[]>([])
 
   const fetchPosts = useCallback(async (payload: SearchPostsPayload = {}) => {
+    const defaultQuery = `repo:guipmdev/github-blog-desafio-react`
+
     const query = payload.query ? payload.query : ''
     const repo = payload.repo ? `repo:${payload.repo}` : ''
 
@@ -47,9 +49,7 @@ export function PostsProvider({ children }: PostsProviderProps) {
 
     const response = await api.get(`/search/issues`, {
       params: {
-        q: completeQuery.length
-          ? completeQuery
-          : 'repo:guipmdev/github-blog-desafio-react',
+        q: completeQuery.length ? completeQuery : defaultQuery,
       },
     })
 
