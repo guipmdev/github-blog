@@ -9,7 +9,7 @@ export const HomeContainer = styled.main`
 
 export const Posts = styled.ul`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, calc(50% - 1rem));
   gap: 2rem;
 
   margin-bottom: 3rem;

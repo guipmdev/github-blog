@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const PostItemContainer = styled.li`
   background: ${(props) => props.theme['base-post']};
+  min-height: 260px;
 
   border: 2px solid transparent;
   border-radius: 10px;
@@ -29,8 +30,14 @@ export const PostItemContainer = styled.li`
   }
 
   h3 {
+    display: -webkit-box;
+    overflow: hidden;
+
     font: ${(props) => props.theme['title-m']};
     color: ${(props) => props.theme['base-title']};
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
   }
 
   span {
@@ -41,9 +48,10 @@ export const PostItemContainer = styled.li`
 
   p {
     display: -webkit-box;
+    overflow: hidden;
+
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
-    overflow: hidden;
     text-overflow: ellipsis;
   }
 `
