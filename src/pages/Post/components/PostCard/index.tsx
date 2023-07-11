@@ -1,5 +1,8 @@
 import { PostCardContainer, CustomLink } from './styles'
 
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+
 import {
   FaChevronLeft,
   FaArrowUpRightFromSquare,
@@ -18,6 +21,18 @@ interface PostCardProps {
 }
 
 export function PostCard({ postData }: PostCardProps) {
+  let publishingDateDistanceFromNow = ''
+
+  if (Object.keys(postData).length) {
+    publishingDateDistanceFromNow = formatDistanceToNow(
+      new Date(postData.created_at),
+      {
+        locale: ptBR,
+        addSuffix: true,
+      },
+    )
+  }
+
   return (
     <PostCardContainer>
       {!Object.keys(postData).length ? (
@@ -42,7 +57,7 @@ export function PostCard({ postData }: PostCardProps) {
           <IconInfos
             infos={[
               { name: postData.user.login, icon: FaGithub },
-              { name: postData.created_at, icon: FaCalendarDay },
+              { name: publishingDateDistanceFromNow, icon: FaCalendarDay },
               { name: `${postData.comments} comentários`, icon: FaComment },
             ]}
             $textColor="base-span"

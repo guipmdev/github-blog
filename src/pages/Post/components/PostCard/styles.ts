@@ -5,6 +5,7 @@ import { CardBase, CustomLinkBase } from '../../../../styles/bases'
 export const PostCardContainer = styled(CardBase)`
   flex-direction: column;
 
+  width: 100%;
   min-height: 168px;
 
   .navigation {

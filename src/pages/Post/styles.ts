@@ -3,6 +3,10 @@ import styled from 'styled-components'
 import ReactMarkdownPreview from '@uiw/react-markdown-preview'
 
 export const PostContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
   max-width: calc(864px + 1rem);
 
   padding: 1rem;
@@ -12,7 +16,7 @@ export const PostContainer = styled.main`
 export const CustomReactMarkdownPreview = styled(ReactMarkdownPreview)`
   background: transparent;
 
-  padding: 2.5rem 2rem;
+  padding: 0 2rem 2.5rem;
 
   font-family: 'Nunito', sans-serif;
 
