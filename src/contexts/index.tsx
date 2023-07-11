@@ -9,8 +9,8 @@ interface ContextProvidersProps {
 
 export function ContextProviders({ children }: ContextProvidersProps) {
   return (
-    <PostsProvider>
-      <UserProvider>{children}</UserProvider>
-    </PostsProvider>
+    <UserProvider>
+      <PostsProvider>{children}</PostsProvider>
+    </UserProvider>
   )
 }

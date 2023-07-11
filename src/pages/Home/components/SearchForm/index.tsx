@@ -37,9 +37,9 @@ export function SearchForm() {
       }
 
       const flag = 'repo:'
-      const hasRepo = query.includes(flag)
+      const hasFlag = query.includes(flag)
 
-      if (hasRepo) {
+      if (hasFlag) {
         const flagIndex = trimmedQuery.indexOf(flag)
 
         const querySubstring = trimmedQuery

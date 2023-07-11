@@ -31,7 +31,8 @@ interface UserProviderProps {
 }
 
 export function UserProvider({ children }: UserProviderProps) {
-  const [desiredUser, setDesiredUser] = useState('diego3g')
+  const desiredUser = `guipmdev`
+
   const [user, setUser] = useState<User>({} as User)
 
   const fetchUser = useCallback(async () => {

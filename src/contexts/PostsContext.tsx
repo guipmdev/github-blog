@@ -39,18 +39,22 @@ interface PostsProviderProps {
 export function PostsProvider({ children }: PostsProviderProps) {
   const [posts, setPosts] = useState<Post[]>([])
 
-  const fetchPosts = useCallback(
-    async ({ repo, query }: SearchPostsPayload = {}) => {
-      const response = await api.get(`/search/issues`, {
-        params: {
-          q: `${query}${repo && `repo:${repo}`}`,
-        },
-      })
+  const fetchPosts = useCallback(async (payload: SearchPostsPayload = {}) => {
+    const query = payload.query ? payload.query : ''
+    const repo = payload.repo ? `repo:${payload.repo}` : ''
 
-      setPosts(response.data.items)
-    },
-    [],
-  )
+    const completeQuery = query + repo
+
+    const response = await api.get(`/search/issues`, {
+      params: {
+        q: completeQuery.length
+          ? completeQuery
+          : 'repo:guipmdev/github-blog-desafio-react',
+      },
+    })
+
+    setPosts(response.data.items)
+  }, [])
 
   useEffect(() => {
     fetchPosts()
