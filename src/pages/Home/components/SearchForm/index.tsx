@@ -88,7 +88,7 @@ export function SearchForm() {
         <span>{posts.length} publicações</span>
       </div>
 
-      <input type="text" placeholder="Buscar conteudo" {...register('query')} />
+      <input type="text" placeholder="Buscar conteúdo" {...register('query')} />
     </SearchFormContainer>
   )
 }
