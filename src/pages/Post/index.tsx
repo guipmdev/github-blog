@@ -1,4 +1,4 @@
-import { PostContainer, CustomReactMarkdownPreview } from './styles'
+import { PostContainer } from './styles'
 
 import { useState, useCallback, useEffect } from 'react'
 
@@ -6,6 +6,8 @@ import remarkGfm from 'remark-gfm'
 import remarkEmoji from 'remark-emoji'
 
 import { useParams } from 'react-router-dom'
+
+import ReactMarkdownPreview from '@uiw/react-markdown-preview'
 
 import { Post as PostType } from '../../contexts/PostsContext'
 
@@ -38,7 +40,7 @@ export function Post() {
       {markdown.length === 0 ? (
         <Loading />
       ) : (
-        <CustomReactMarkdownPreview
+        <ReactMarkdownPreview
           source={markdown}
           remarkPlugins={[remarkGfm, remarkEmoji]}
           wrapperElement={{

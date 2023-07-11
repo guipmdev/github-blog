@@ -23,4 +23,6 @@ export const PostCardContainer = styled(CardBase)`
   }
 `
 
-export const CustomLink = styled(CustomLinkBase)``
+export const CustomLink = styled(CustomLinkBase).withConfig({
+  shouldForwardProp: (prop) => !!prop,
+})``
