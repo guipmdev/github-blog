@@ -13,7 +13,7 @@ import {
 } from '../../../../contexts/PostsContext'
 
 const searchPostsFormSchema = z.object({
-  query: z.string(),
+  query: z.string().min(1),
 })
 
 type SearchPostsFormInputs = z.infer<typeof searchPostsFormSchema>
@@ -21,15 +21,26 @@ type SearchPostsFormInputs = z.infer<typeof searchPostsFormSchema>
 export function SearchForm() {
   const { fetchPosts, posts } = useContext(PostsContext)
 
-  const { register, watch, handleSubmit } = useForm<SearchPostsFormInputs>({
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { isDirty, isSubmitted },
+    reset,
+  } = useForm<SearchPostsFormInputs>({
     resolver: zodResolver(searchPostsFormSchema),
+    defaultValues: {
+      query: '',
+    },
   })
 
   const watchQuery = watch('query')
 
   const handleSearchPosts = useCallback(
-    ({ query }: SearchPostsFormInputs) => {
+    async ({ query }: SearchPostsFormInputs) => {
       const trimmedQuery = query.trim()
+
+      if (trimmedQuery.length === 0) return
 
       const payload: SearchPostsPayload = {
         repo: undefined,
@@ -66,20 +77,30 @@ export function SearchForm() {
         payload.query = queryWithoutRepo.replace(/ /g, '%20')
       }
 
-      fetchPosts(payload)
+      await fetchPosts(payload)
     },
     [fetchPosts],
   )
 
   useEffect(() => {
-    const submitTimeout = setTimeout(() => {
-      handleSubmit(handleSearchPosts)()
-    }, 2000)
+    if (isSubmitted) {
+      reset({}, { keepDirtyValues: true })
+    }
+  }, [isSubmitted, reset])
+
+  useEffect(() => {
+    let submitTimeout = 0
+
+    if (isDirty && !isSubmitted) {
+      submitTimeout = setTimeout(() => {
+        handleSubmit(handleSearchPosts)()
+      }, 2000)
+    }
 
     return () => {
       clearTimeout(submitTimeout)
     }
-  }, [handleSearchPosts, handleSubmit, watchQuery])
+  }, [handleSearchPosts, handleSubmit, isDirty, isSubmitted, watchQuery])
 
   return (
     <SearchFormContainer onSubmit={handleSubmit(handleSearchPosts)}>

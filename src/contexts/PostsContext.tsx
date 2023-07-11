@@ -27,7 +27,7 @@ export interface SearchPostsPayload {
 
 interface PostsContextType {
   posts: Post[]
-  fetchPosts: ({ repo, query }?: SearchPostsPayload) => Promise<void>
+  fetchPosts: (payload?: SearchPostsPayload) => Promise<void>
 }
 
 export const PostsContext = createContext({} as PostsContextType)
