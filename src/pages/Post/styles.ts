@@ -35,7 +35,6 @@ export const CustomReactMarkdownPreview = styled(ReactMarkdownPreview)`
 
   img {
     background: transparent;
-    width: 25%;
   }
 
   pre {
