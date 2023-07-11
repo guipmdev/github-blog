@@ -35,9 +35,7 @@ export function UserProvider({ children }: UserProviderProps) {
   const [user, setUser] = useState<User>({} as User)
 
   const fetchUser = useCallback(async () => {
-    const response = await api.get(
-      `https://api.github.com/users/${desiredUser}`,
-    )
+    const response = await api.get(`/users/${desiredUser}`)
 
     setUser(response.data)
   }, [desiredUser])

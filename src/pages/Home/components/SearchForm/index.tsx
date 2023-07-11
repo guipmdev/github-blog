@@ -3,9 +3,14 @@ import { SearchFormContainer } from './styles'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { useContext, useEffect, useCallback } from 'react'
+
 import { useForm } from 'react-hook-form'
 
-import { useEffect } from 'react'
+import {
+  PostsContext,
+  SearchPostsPayload,
+} from '../../../../contexts/PostsContext'
 
 const searchPostsFormSchema = z.object({
   query: z.string(),
@@ -14,15 +19,57 @@ const searchPostsFormSchema = z.object({
 type SearchPostsFormInputs = z.infer<typeof searchPostsFormSchema>
 
 export function SearchForm() {
+  const { fetchPosts } = useContext(PostsContext)
+
   const { register, watch, handleSubmit } = useForm<SearchPostsFormInputs>({
     resolver: zodResolver(searchPostsFormSchema),
   })
 
   const watchQuery = watch('query')
 
-  function handleSearchPosts(data: SearchPostsFormInputs) {
-    console.log({ data })
-  }
+  const handleSearchPosts = useCallback(
+    ({ query }: SearchPostsFormInputs) => {
+      const trimmedQuery = query.trim()
+
+      const payload: SearchPostsPayload = {
+        repo: undefined,
+        query: trimmedQuery,
+      }
+
+      const flag = 'repo:'
+      const hasRepo = query.includes(flag)
+
+      if (hasRepo) {
+        const flagIndex = trimmedQuery.indexOf(flag)
+
+        const querySubstring = trimmedQuery
+          .substring(flagIndex + flag.length)
+          .trim()
+
+        const firstWhitespaceAfterFlagIndex = querySubstring.indexOf(' ')
+
+        const repoName =
+          firstWhitespaceAfterFlagIndex >= 0
+            ? querySubstring.substring(0, firstWhitespaceAfterFlagIndex)
+            : querySubstring
+
+        const repoWithFlagLength = repoName.length + flag.length
+
+        const queryWithoutRepo =
+          flagIndex > 0
+            ? trimmedQuery
+                .substring(0, trimmedQuery.length - repoWithFlagLength)
+                .trim()
+            : trimmedQuery.substring(repoWithFlagLength).trim()
+
+        payload.repo = repoName
+        payload.query = queryWithoutRepo.replace(/ /g, '%20')
+      }
+
+      fetchPosts(payload)
+    },
+    [fetchPosts],
+  )
 
   useEffect(() => {
     const submitTimeout = setTimeout(() => {
@@ -32,7 +79,7 @@ export function SearchForm() {
     return () => {
       clearTimeout(submitTimeout)
     }
-  }, [handleSubmit, watchQuery])
+  }, [handleSearchPosts, handleSubmit, watchQuery])
 
   return (
     <SearchFormContainer onSubmit={handleSubmit(handleSearchPosts)}>

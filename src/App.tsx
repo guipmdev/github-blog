@@ -5,8 +5,9 @@ import { BrowserRouter } from 'react-router-dom'
 import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
 
+import { ContextProviders } from './contexts'
+
 import { Router } from './Router'
-import { UserProvider } from './contexts/UserContext'
 
 export function App() {
   return (
@@ -14,9 +15,9 @@ export function App() {
       <GlobalStyle />
 
       <BrowserRouter>
-        <UserProvider>
+        <ContextProviders>
           <Router />
-        </UserProvider>
+        </ContextProviders>
       </BrowserRouter>
     </ThemeProvider>
   )
