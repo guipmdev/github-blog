@@ -13,6 +13,7 @@ import { api } from '../lib/axios'
 export interface Post {
   id: string
   html_url: string
+  number: number
   title: string
   body: string
   comments: number

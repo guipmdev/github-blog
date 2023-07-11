@@ -20,9 +20,15 @@ export function PostItem({ postData }: PostItemProps) {
     },
   )
 
+  const baseURL = 'https://github.com/'
+
+  const postURL = postData.html_url
+    .substring(baseURL.length)
+    .replace('/issues/', '/post/')
+
   return (
     <PostItemContainer>
-      <Link to="/post/1">
+      <Link to={postURL}>
         <div>
           <h3>{postData.title}</h3>
           <span>{publishingDateDistanceFromNow}</span>
