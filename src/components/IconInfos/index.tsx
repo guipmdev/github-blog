@@ -19,9 +19,10 @@ export function IconInfos({ infos, $textColor }: IconInfosProps) {
         const { name, icon: Icon } = info
 
         return (
-          <span key={Icon.name}>
-            <Icon /> {name}
-          </span>
+          <div key={Icon.name}>
+            <Icon />
+            <p>{name}</p>
+          </div>
         )
       })}
     </IconInfosContainer>

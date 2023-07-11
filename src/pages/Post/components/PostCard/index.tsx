@@ -39,7 +39,7 @@ export function PostCard({ postData }: PostCardProps) {
         <Loading />
       ) : (
         <>
-          <div className="navigation">
+          <div>
             <CustomLink to=".." relative="path">
               <FaChevronLeft /> VOLTAR
             </CustomLink>
@@ -52,16 +52,18 @@ export function PostCard({ postData }: PostCardProps) {
             </CustomLink>
           </div>
 
-          <h1>{postData.title}</h1>
+          <div className="post-info">
+            <h1>{postData.title}</h1>
 
-          <IconInfos
-            infos={[
-              { name: postData.user.login, icon: FaGithub },
-              { name: publishingDateDistanceFromNow, icon: FaCalendarDay },
-              { name: `${postData.comments} comentários`, icon: FaComment },
-            ]}
-            $textColor="base-span"
-          />
+            <IconInfos
+              infos={[
+                { name: postData.user.login, icon: FaGithub },
+                { name: publishingDateDistanceFromNow, icon: FaCalendarDay },
+                { name: `${postData.comments} comentários`, icon: FaComment },
+              ]}
+              $textColor="base-span"
+            />
+          </div>
         </>
       )}
     </PostCardContainer>

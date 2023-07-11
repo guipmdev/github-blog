@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { device } from './breakpoints'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -20,5 +21,11 @@ export const GlobalStyle = createGlobalStyle`
 
   body, input, textarea, button {
     font: ${(props) => props.theme['text-m']};
+  }
+
+  @media ${device.sm} {
+    html {
+      font-size: 87.5%;
+    }
   }
 `

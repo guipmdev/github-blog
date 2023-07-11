@@ -2,12 +2,13 @@ import styled from 'styled-components'
 
 import { CardBase, CustomLinkBase } from '../../../../styles/bases'
 
+import { device } from '../../../../styles/breakpoints'
+
 export const UserCardContainer = styled(CardBase)`
-  position: relative;
+  align-items: center;
+  gap: 2rem;
 
   min-height: 212px;
-
-  gap: 2rem;
 
   margin-bottom: 4.5rem;
 
@@ -18,23 +19,53 @@ export const UserCardContainer = styled(CardBase)`
 
     border-radius: 8px;
   }
+
+  @media ${device.sm} {
+    flex-direction: column;
+
+    img {
+      margin-top: -66px;
+    }
+  }
 `
 
-export const CustomLink = styled(CustomLinkBase)`
-  position: absolute;
-  top: 2.5rem;
-  right: 2rem;
-`
+export const CustomLink = styled(CustomLinkBase)``
 
 export const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 0.5rem;
+
+  overflow: hidden;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  & > div:last-of-type {
+    flex-direction: column;
+    flex: 1;
+    gap: 1.5rem;
+  }
 
   h1 {
-    margin-bottom: 0.5rem;
-
     font: ${(props) => props.theme['title-l']};
     color: ${(props) => props.theme['base-title']};
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  @media ${device.sm} {
+    & > div {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+
+    p {
+      text-align: center;
+    }
   }
 `

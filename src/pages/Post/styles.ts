@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { device } from '../../styles/breakpoints'
+
 export const PostContainer = styled.main`
   display: flex;
   flex-direction: column;
@@ -43,6 +45,12 @@ export const PostContainer = styled.main`
 
       padding: 1rem;
       border-radius: 2px;
+    }
+  }
+
+  @media ${device.sm} {
+    .wmde-markdown {
+      padding: 0 1rem 1.25rem;
     }
   }
 `

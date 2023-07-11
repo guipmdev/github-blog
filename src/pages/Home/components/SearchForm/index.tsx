@@ -118,6 +118,11 @@ export function SearchForm({ updateIsSearchingStatus }: SearchFormProps) {
       </div>
 
       <input type="text" placeholder="Buscar conteúdo" {...register('query')} />
+      <div className="tooltip">
+        <span>
+          Use <code>repo:owner/repo-name</code> para filtrar por repositório
+        </span>
+      </div>
     </SearchFormContainer>
   )
 }

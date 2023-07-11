@@ -2,24 +2,35 @@ import styled from 'styled-components'
 
 import { CardBase, CustomLinkBase } from '../../../../styles/bases'
 
+import { device } from '../../../../styles/breakpoints'
+
 export const PostCardContainer = styled(CardBase)`
   flex-direction: column;
+  gap: 1.25rem;
 
   width: 100%;
-  min-height: 168px;
 
-  .navigation {
+  & > div {
     display: flex;
     justify-content: space-between;
+  }
 
-    margin-bottom: 1.25rem;
+  .post-info {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   h1 {
-    margin-bottom: 0.5rem;
-
     font: ${(props) => props.theme['title-l']};
     color: ${(props) => props.theme.title};
+  }
+
+  @media ${device.sm} {
+    .post-info {
+      align-items: center;
+
+      text-align: center;
+    }
   }
 `
 

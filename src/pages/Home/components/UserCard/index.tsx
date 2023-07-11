@@ -27,26 +27,30 @@ export function UserCard() {
           <UserInfo>
             <div>
               <h1>{user.name}</h1>
-              <p>{user.bio}</p>
+
+              <CustomLink
+                to={user.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GITHUB <FaArrowUpRightFromSquare />
+              </CustomLink>
             </div>
 
-            <IconInfos
-              infos={[
-                { name: user.login, icon: FaGithub },
-                ...(user.company
-                  ? [{ name: user.company.split('@')[1], icon: FaBuilding }]
-                  : []),
-                { name: `${user.followers} seguidores`, icon: FaUserGroup },
-              ]}
-            />
+            <div>
+              <p>{user.bio}</p>
+
+              <IconInfos
+                infos={[
+                  { name: user.login, icon: FaGithub },
+                  ...(user.company
+                    ? [{ name: user.company.split('@')[1], icon: FaBuilding }]
+                    : []),
+                  { name: `${user.followers} seguidores`, icon: FaUserGroup },
+                ]}
+              />
+            </div>
           </UserInfo>
-          <CustomLink
-            to={user.html_url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GITHUB <FaArrowUpRightFromSquare />
-          </CustomLink>
         </>
       )}
     </UserCardContainer>

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const PostItemContainer = styled.li`
   background: ${(props) => props.theme['base-post']};
+  min-width: 0;
   min-height: 260px;
 
   border: 2px solid transparent;
@@ -15,6 +16,8 @@ export const PostItemContainer = styled.li`
     all: unset;
 
     display: block;
+
+    height: calc(100% - 4rem);
 
     padding: 2rem;
 
