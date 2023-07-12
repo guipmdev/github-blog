@@ -21,9 +21,11 @@ export function PostItem({ postData }: PostItemProps) {
   )
 
   const baseURL = 'https://github.com/'
+
   const postURL = postData.html_url
     .substring(baseURL.length)
     .replace('/issues/', '/post/')
+    .replace('/pull/', '/post/')
 
   return (
     <PostItemContainer>

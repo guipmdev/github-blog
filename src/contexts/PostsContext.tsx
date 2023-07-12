@@ -49,13 +49,17 @@ export function PostsProvider({ children }: PostsProviderProps) {
 
     const defaultQuery = `repo:guipmdev/github-blog-desafio-react`
 
-    let query = ''
-    if (payload.query && payload.query.length > 0) query = payload.query
+    const completeQueryArray = []
 
-    let repo = ''
-    if (payload.repo && payload.repo.length > 0) repo = `repo:${payload.repo}`
+    if (payload.query && payload.query.length > 0)
+      completeQueryArray.push(payload.query)
 
-    const completeQuery = query + repo
+    if (payload.repo && payload.repo.length > 0)
+      completeQueryArray.push(`repo:${payload.repo}`)
+
+    const completeQuery = completeQueryArray.join('%20')
+
+    console.log(completeQuery.length > 0 ? completeQuery : defaultQuery)
 
     await api
       .get(`/search/issues`, {
