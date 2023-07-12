@@ -57,9 +57,7 @@ export function PostsProvider({ children }: PostsProviderProps) {
     if (payload.repo && payload.repo.length > 0)
       completeQueryArray.push(`repo:${payload.repo}`)
 
-    const completeQuery = completeQueryArray.join('%20')
-
-    console.log(completeQuery.length > 0 ? completeQuery : defaultQuery)
+    const completeQuery = completeQueryArray.join(' ')
 
     await api
       .get(`/search/issues`, {

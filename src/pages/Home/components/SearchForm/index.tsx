@@ -74,7 +74,7 @@ export function SearchForm() {
             : trimmedQuery.substring(repoWithFlagLength).trim()
 
         payload.repo = repoName
-        payload.query = queryWithoutRepo.replace(/ /g, '%20')
+        payload.query = queryWithoutRepo
       }
 
       await fetchPosts(payload)
