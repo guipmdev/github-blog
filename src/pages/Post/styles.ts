@@ -22,6 +22,7 @@ export const PostContent = styled.div`
 
   .wmde-markdown {
     background: transparent;
+    width: 100%;
 
     font-family: 'Nunito', sans-serif;
 
