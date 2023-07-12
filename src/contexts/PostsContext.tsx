@@ -6,6 +6,8 @@ import {
   useEffect,
 } from 'react'
 
+import { toast } from 'react-hot-toast'
+
 import { User } from './UserContext'
 
 import { api } from '../lib/axios'
@@ -28,6 +30,7 @@ export interface SearchPostsPayload {
 
 interface PostsContextType {
   posts: Post[]
+  isFetchingPosts: boolean
   fetchPosts: (payload?: SearchPostsPayload) => Promise<void>
 }
 
@@ -39,22 +42,35 @@ interface PostsProviderProps {
 
 export function PostsProvider({ children }: PostsProviderProps) {
   const [posts, setPosts] = useState<Post[]>([])
+  const [isFetchingPosts, setIsFetchingPosts] = useState(true)
 
   const fetchPosts = useCallback(async (payload: SearchPostsPayload = {}) => {
+    setIsFetchingPosts(true)
+
     const defaultQuery = `repo:guipmdev/github-blog-desafio-react`
 
-    const query = payload.query ? payload.query : ''
-    const repo = payload.repo ? `repo:${payload.repo}` : ''
+    let query = ''
+    if (payload.query && payload.query.length > 0) query = payload.query
+
+    let repo = ''
+    if (payload.repo && payload.repo.length > 0) repo = `repo:${payload.repo}`
 
     const completeQuery = query + repo
 
-    const response = await api.get(`/search/issues`, {
-      params: {
-        q: completeQuery.length ? completeQuery : defaultQuery,
-      },
-    })
+    await api
+      .get(`/search/issues`, {
+        params: {
+          q: completeQuery.length > 0 ? completeQuery : defaultQuery,
+        },
+      })
+      .then((response) => {
+        setPosts(response.data.items)
+      })
+      .catch(() => {
+        toast.error('Falha ao obter os posts.')
+      })
 
-    setPosts(response.data.items)
+    setIsFetchingPosts(false)
   }, [])
 
   useEffect(() => {
@@ -62,7 +78,7 @@ export function PostsProvider({ children }: PostsProviderProps) {
   }, [fetchPosts])
 
   return (
-    <PostsContext.Provider value={{ posts, fetchPosts }}>
+    <PostsContext.Provider value={{ posts, isFetchingPosts, fetchPosts }}>
       {children}
     </PostsContext.Provider>
   )

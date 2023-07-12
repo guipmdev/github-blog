@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { device } from '../../styles/breakpoints'
+
 import coverImage from '../../assets/cover.svg'
 
 export const HeaderContainer = styled.header`
@@ -13,6 +15,12 @@ export const HeaderContainer = styled.header`
   img {
     width: 148px;
 
-    margin-bottom: 2.875rem;
+    margin-bottom: 46px;
+  }
+
+  @media ${device.sm} {
+    img {
+      margin-bottom: 112px;
+    }
   }
 `

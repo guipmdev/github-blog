@@ -8,10 +8,9 @@ export function Loading() {
   const theme = useTheme()
 
   return (
-    <LoadingContainer>
+    <LoadingContainer className="loading">
       <PropagateLoader
         color={theme['base-label']}
-        size={75}
         speedMultiplier={0.75}
         aria-label="Loading Spinner"
         data-testid="loader"

@@ -1,6 +1,6 @@
 import { HomeContainer, Posts } from './styles'
 
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 
 import { PostsContext } from '../../contexts/PostsContext'
 
@@ -10,22 +10,16 @@ import { Loading } from '../../components/Loading'
 import { PostItem } from './components/PostItem'
 
 export function Home() {
-  const { posts } = useContext(PostsContext)
-
-  const [isSearching, setIsSearching] = useState(false)
-
-  function updateIsSearchingStatus(newStatus: boolean) {
-    setIsSearching(newStatus)
-  }
+  const { posts, isFetchingPosts } = useContext(PostsContext)
 
   return (
     <HomeContainer>
       <UserCard />
 
       <section>
-        <SearchForm updateIsSearchingStatus={updateIsSearchingStatus} />
+        <SearchForm />
 
-        {isSearching ? (
+        {isFetchingPosts ? (
           <Loading />
         ) : (
           <Posts>

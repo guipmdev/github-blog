@@ -1,5 +1,7 @@
 import { ThemeProvider } from 'styled-components'
 
+import { Toaster } from 'react-hot-toast'
+
 import { BrowserRouter } from 'react-router-dom'
 
 import { defaultTheme } from './styles/themes/default'
@@ -13,6 +15,14 @@ export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
+      <Toaster
+        toastOptions={{
+          style: {
+            background: defaultTheme['base-input'],
+            color: defaultTheme['base-text'],
+          },
+        }}
+      />
 
       <BrowserRouter>
         <ContextProviders>

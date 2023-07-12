@@ -1,4 +1,4 @@
-import { PostItemContainer } from './styles'
+import { PostItemContainer, PostInfo } from './styles'
 
 import { Link } from 'react-router-dom'
 
@@ -21,7 +21,6 @@ export function PostItem({ postData }: PostItemProps) {
   )
 
   const baseURL = 'https://github.com/'
-
   const postURL = postData.html_url
     .substring(baseURL.length)
     .replace('/issues/', '/post/')
@@ -29,10 +28,10 @@ export function PostItem({ postData }: PostItemProps) {
   return (
     <PostItemContainer>
       <Link to={postURL}>
-        <div>
+        <PostInfo>
           <h3>{postData.title}</h3>
           <span>{publishingDateDistanceFromNow}</span>
-        </div>
+        </PostInfo>
 
         <p>{postData.body}</p>
       </Link>

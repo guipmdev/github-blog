@@ -6,6 +6,7 @@ export const CardBase = styled.div`
   display: flex;
 
   background: ${(props) => props.theme['base-profile']};
+  width: 100%;
 
   padding: 2rem 2.5rem;
   border-radius: 10px;

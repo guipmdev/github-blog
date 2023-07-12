@@ -10,8 +10,6 @@ export const UserCardContainer = styled(CardBase)`
 
   min-height: 212px;
 
-  margin-bottom: 4.5rem;
-
   img {
     background: ${(props) => props.theme['base-border']};
     height: 148px;
@@ -28,8 +26,6 @@ export const UserCardContainer = styled(CardBase)`
     }
   }
 `
-
-export const CustomLink = styled(CustomLinkBase)``
 
 export const UserInfo = styled.div`
   display: flex;
@@ -51,11 +47,12 @@ export const UserInfo = styled.div`
   }
 
   h1 {
+    overflow: hidden;
+
     font: ${(props) => props.theme['title-l']};
     color: ${(props) => props.theme['base-title']};
-    overflow: hidden;
-    white-space: nowrap;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   @media ${device.sm} {
@@ -69,3 +66,5 @@ export const UserInfo = styled.div`
     }
   }
 `
+
+export const CustomLink = styled(CustomLinkBase)``

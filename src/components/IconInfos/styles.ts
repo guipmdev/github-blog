@@ -22,19 +22,19 @@ export const IconInfosContainer = styled.div<IconInfosContainerProps>`
     gap: 0.5rem;
 
     overflow: hidden;
-  }
 
-  svg {
-    min-width: fit-content;
+    svg {
+      min-width: fit-content;
 
-    color: ${(props) => props.theme['base-label']};
-  }
+      color: ${(props) => props.theme['base-label']};
+    }
 
-  p {
-    overflow: hidden;
+    p {
+      overflow: hidden;
 
-    text-overflow: ellipsis;
-    white-space: nowrap;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 
   @media ${device.sm} {

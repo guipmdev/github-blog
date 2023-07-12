@@ -7,15 +7,21 @@ export const PostContainer = styled.main`
   flex-direction: column;
   gap: 2.5rem;
 
-  max-width: calc(864px + 1rem);
+  max-width: calc(${(props) => props.theme['max-width']} + 1rem);
 
   padding: 1rem;
   margin: 0 auto;
+`
+
+export const PostContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0 2rem 2.5rem;
 
   .wmde-markdown {
     background: transparent;
-
-    padding: 0 2rem 2.5rem;
 
     font-family: 'Nunito', sans-serif;
 
@@ -49,8 +55,6 @@ export const PostContainer = styled.main`
   }
 
   @media ${device.sm} {
-    .wmde-markdown {
-      padding: 0 1rem 1.25rem;
-    }
+    padding: 0 1rem 1.25rem;
   }
 `

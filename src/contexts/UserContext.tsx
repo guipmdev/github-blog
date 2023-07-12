@@ -8,6 +8,8 @@ import {
 
 import { api } from '../lib/axios'
 
+import { toast } from 'react-hot-toast'
+
 export interface User {
   login: string
   id: number
@@ -21,6 +23,7 @@ export interface User {
 
 interface UserContextType {
   user: User
+  isFetchingUser: boolean
   fetchUser: () => Promise<void>
 }
 
@@ -31,22 +34,32 @@ interface UserProviderProps {
 }
 
 export function UserProvider({ children }: UserProviderProps) {
-  const desiredUser = `guipmdev`
+  const defaultUser = 'guipmdev'
 
   const [user, setUser] = useState<User>({} as User)
+  const [isFetchingUser, setIsFetchingUser] = useState(true)
 
   const fetchUser = useCallback(async () => {
-    const response = await api.get(`/users/${desiredUser}`)
+    setIsFetchingUser(true)
 
-    setUser(response.data)
-  }, [desiredUser])
+    await api
+      .get(`/users/${defaultUser}`)
+      .then((response) => {
+        setUser(response.data)
+      })
+      .catch(() => {
+        toast.error('Falha ao obter o usuário.')
+      })
+
+    setIsFetchingUser(false)
+  }, [defaultUser])
 
   useEffect(() => {
     fetchUser()
   }, [fetchUser])
 
   return (
-    <UserContext.Provider value={{ user, fetchUser }}>
+    <UserContext.Provider value={{ user, fetchUser, isFetchingUser }}>
       {children}
     </UserContext.Provider>
   )

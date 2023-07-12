@@ -10,6 +10,8 @@ export const PostItemContainer = styled.li`
 
   &:hover {
     border-color: ${(props) => props.theme['base-label']};
+
+    transition: 0.2s border-color;
   }
 
   a {
@@ -24,13 +26,22 @@ export const PostItemContainer = styled.li`
     cursor: pointer;
   }
 
-  div {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+  p {
+    display: -webkit-box;
+    overflow: hidden;
 
-    margin-bottom: 1.25rem;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
   }
+`
+
+export const PostInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  margin-bottom: 1.25rem;
 
   h3 {
     display: -webkit-box;
@@ -47,14 +58,5 @@ export const PostItemContainer = styled.li`
     font: ${(props) => props.theme['text-s']};
     color: ${(props) => props.theme['base-span']};
     white-space: nowrap;
-  }
-
-  p {
-    display: -webkit-box;
-    overflow: hidden;
-
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
   }
 `

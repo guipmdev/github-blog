@@ -15,11 +15,11 @@ interface IconInfosProps {
 export function IconInfos({ infos, $textColor }: IconInfosProps) {
   return (
     <IconInfosContainer $textColor={$textColor}>
-      {infos.map((info) => {
-        const { name, icon: Icon } = info
+      {infos.map(({ name, icon: Icon }) => {
+        const key = Icon.name + name
 
         return (
-          <div key={Icon.name}>
+          <div key={key}>
             <Icon />
             <p>{name}</p>
           </div>

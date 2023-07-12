@@ -15,15 +15,18 @@ import { Loading } from '../../../../components/Loading'
 import { IconInfos } from '../../../../components/IconInfos'
 
 export function UserCard() {
-  const { user } = useContext(UserContext)
+  const { user, isFetchingUser } = useContext(UserContext)
+
+  const hasUserData = Object.keys(user).length
 
   return (
     <UserCardContainer>
-      {!user ? (
+      {isFetchingUser || (!isFetchingUser && !hasUserData) ? (
         <Loading />
       ) : (
         <>
           <img src={user.avatar_url} alt="" />
+
           <UserInfo>
             <div>
               <h1>{user.name}</h1>

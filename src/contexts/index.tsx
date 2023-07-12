@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
-import { PostsProvider } from './PostsContext'
 import { UserProvider } from './UserContext'
+import { PostsProvider } from './PostsContext'
 
 interface ContextProvidersProps {
   children: ReactNode

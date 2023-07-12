@@ -3,7 +3,7 @@ import { SearchFormContainer } from './styles'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { useContext, useEffect, useCallback } from 'react'
+import { useContext, useCallback, useEffect } from 'react'
 
 import { useForm } from 'react-hook-form'
 
@@ -18,18 +18,14 @@ const searchPostsFormSchema = z.object({
 
 type SearchPostsFormInputs = z.infer<typeof searchPostsFormSchema>
 
-interface SearchFormProps {
-  updateIsSearchingStatus: (newStatus: boolean) => void
-}
-
-export function SearchForm({ updateIsSearchingStatus }: SearchFormProps) {
+export function SearchForm() {
   const { fetchPosts, posts } = useContext(PostsContext)
 
   const {
     register,
     watch,
     handleSubmit,
-    formState: { isDirty, isSubmitting, isSubmitted },
+    formState: { isDirty, isSubmitted },
     reset,
   } = useForm<SearchPostsFormInputs>({
     resolver: zodResolver(searchPostsFormSchema),
@@ -87,37 +83,30 @@ export function SearchForm({ updateIsSearchingStatus }: SearchFormProps) {
   )
 
   useEffect(() => {
-    updateIsSearchingStatus(isSubmitting)
-  }, [isSubmitting, updateIsSearchingStatus])
+    if (!isDirty || isSubmitted) return
 
-  useEffect(() => {
-    if (isSubmitted) {
-      reset({}, { keepDirtyValues: true })
-    }
-  }, [isSubmitted, reset])
-
-  useEffect(() => {
-    let submitTimeout = 0
-
-    if (isDirty && !isSubmitted) {
-      submitTimeout = setTimeout(() => {
-        handleSubmit(handleSearchPosts)()
-      }, 2000)
-    }
+    const submitTimeout = setTimeout(() => {
+      handleSubmit(handleSearchPosts)()
+    }, 2000)
 
     return () => {
       clearTimeout(submitTimeout)
     }
-  }, [handleSearchPosts, handleSubmit, isDirty, isSubmitted, watchQuery])
+  }, [isDirty, isSubmitted, handleSubmit, handleSearchPosts, watchQuery])
+
+  useEffect(() => {
+    if (isSubmitted) reset({}, { keepDirtyValues: true })
+  }, [isSubmitted, reset])
 
   return (
     <SearchFormContainer onSubmit={handleSubmit(handleSearchPosts)}>
-      <div>
+      <div className="header-form">
         <h2>Publicações</h2>
         <span>{posts.length} publicações</span>
       </div>
 
       <input type="text" placeholder="Buscar conteúdo" {...register('query')} />
+
       <div className="tooltip">
         <span>
           Use <code>repo:owner/repo-name</code> para filtrar por repositório

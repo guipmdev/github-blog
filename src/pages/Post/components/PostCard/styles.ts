@@ -8,21 +8,22 @@ export const PostCardContainer = styled(CardBase)`
   flex-direction: column;
   gap: 1.25rem;
 
-  width: 100%;
+  min-height: 168px;
 
-  & > div {
+  .navigation {
     display: flex;
     justify-content: space-between;
   }
 
   .post-info {
+    display: flex;
     flex-direction: column;
     gap: 0.5rem;
-  }
 
-  h1 {
-    font: ${(props) => props.theme['title-l']};
-    color: ${(props) => props.theme.title};
+    h1 {
+      font: ${(props) => props.theme['title-l']};
+      color: ${(props) => props.theme.title};
+    }
   }
 
   @media ${device.sm} {
