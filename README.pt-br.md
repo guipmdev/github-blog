@@ -61,7 +61,7 @@
   </a>
 </p>
 
-![Captura de tela da página inicial da aplicação](./src/assets/images/cover.png)
+![Captura de tela da página inicial da aplicação](./src/assets/images/cover.webp)
 
 <p align="center">
   <a href="https://guipmdev-github-blog.vercel.app/"
@@ -103,7 +103,7 @@ Seu objetivo principal é fornecer uma aplicação fácil de usar e visualmente 
 
 🔎 **Procure por publicações** em todos os repositórios
 
-🏷 Use de **filtros** para especificar em qual repo deseja pesquisar
+🏷 Use **filtros** para especificar em qual repo deseja pesquisar
 
 📰 **Leia postagens** incríveis diretamente na plataforma, ou as abra no próprio GH
 
@@ -117,7 +117,7 @@ O layout da aplicação foi projetado pela **Rocketseat** e está disponível no
 
 <p align="center">
   <img
-    src="./src/assets/images/layout-cover.png"
+    src="./src/assets/images/layout-cover.webp"
     alt="Imagem de capa do layout da aplicação web"
     width="50%"
   />
