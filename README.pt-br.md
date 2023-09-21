@@ -93,9 +93,9 @@
 
 ## 📍 Visão geral
 
-O projeto é uma aplicação web desenvolvida em _React_ que oferece uma interface de leitura e pesquisa de publicações em repositórios do GitHub. Suas principais funcionalidades incluem visualizar as informações básicas de um usuário específico na página inicial, buscar por postagens usando palavras-chave e/ou filtros de repositórios e fazer sua leitura por completo ao acessá-las.
+Esse projeto é uma aplicação web desenvolvida em _React_ que oferece uma interface de leitura e pesquisa de publicações em repositórios do GitHub. Suas principais funcionalidades incluem visualizar as informações básicas de um usuário específico na página inicial, buscar por postagens usando palavras-chave e/ou filtros de repositórios e fazer sua leitura por completo ao acessá-las.
 
-O objetivo do projeto é fornecer uma aplicação fácil de usar e visualmente agradável para navegação e exploração dos blogs, melhorando sua experiência de leitura e descoberta de conteúdos.
+Seu objetivo principal é fornecer uma aplicação fácil de usar e visualmente agradável para navegação e exploração dos blogs, melhorando sua experiência de leitura e descoberta de conteúdos.
 
 ## ✨ Funcionalidades
 
