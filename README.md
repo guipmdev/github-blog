@@ -109,6 +109,8 @@ The project's purpose is to provide an easy-to-use and visually pleasing applica
 
 ## 🤖 Demo
 
+https://github.com/guipmdev/github-blog/assets/136738335/1d8f30bd-f7ff-4507-84e9-efd0bf121876
+
 ## 🎨 Layout
 
 The layout of the application was designed by **Rocketseat** and is available on [Figma](<https://www.figma.com/file/BYpokjkgwb2kamROXb1Z7X/GitHub-Blog-(Community)>).
