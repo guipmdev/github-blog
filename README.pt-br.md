@@ -109,6 +109,8 @@ O objetivo do projeto é fornecer uma aplicação fácil de usar e visualmente a
 
 ## 🤖 Demo
 
+https://github.com/guipmdev/github-blog/assets/136738335/1d8f30bd-f7ff-4507-84e9-efd0bf121876
+
 ## 🎨 Layout
 
 O layout da aplicação foi projetado pela **Rocketseat** e está disponível no [Figma](<https://www.figma.com/file/BYpokjkgwb2kamROXb1Z7X/GitHub-Blog-(Community)>).
