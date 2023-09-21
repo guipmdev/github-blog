@@ -93,7 +93,19 @@
 
 ## 📍 Overview
 
+The project is a _React-based_ web application that provides an interface for reading and searching posts in GitHub repositories. The main functionalities include viewing the basic information of a specific user on the home page, searching for posts using keywords and/or repository filters and reading them in full when accessing them.
+
+The project's purpose is to provide an easy-to-use and visually pleasing application for browsing and exploring blogs, improving the content reading and discovery experience.
+
 ## ✨ Features
+
+👤 View the details of **my GitHub user**
+
+🔎 **Search for posts** in all repositories
+
+🏷 Use **filters** to specify in which repo you want to search
+
+📰 **Read amazing posts** directly on the platform, or open them in GH itself
 
 ## 🤖 Demo
 

@@ -1,6 +1,6 @@
 {
   "name": "github-blog-desafio-react",
-  "description": "",
+  "description": "React and TypeScript-based web app for reading and searching GitHub posts.",
   "private": true,
   "type": "module",
   "scripts": {
