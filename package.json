@@ -44,6 +44,9 @@
     "type": "git",
     "url": "git+https://github.com/guipmdev/github-blog.git"
   },
+  "bugs": {
+    "url": "https://github.com/guipmdev/github-blog/issues"
+  },
   "author": {
     "name": "Guilherme Preveda Milék",
     "email": "guipmdev@gmail.com",
